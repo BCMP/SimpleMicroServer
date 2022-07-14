@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>登录</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{url_for('static',filename='vendors/mdi/css/materialdesignicons.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='vendors/base/vendor.bundle.base.css')}}">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{url_for('static',filename='images/web.png')}}" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth px-0">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+              <div class="brand-logo" style="text-align:center;">
+                <img src="{{url_for('static',filename='images/hust_logo_mini.png')}}" alt="logo" style="width:80%;">
+              </div>
+              <form class="pt-3" action="{{ url_for('login') }}" method="POST">
+                <div class="form-group">
+                  <label>用户名</label>
+                  <div style="position:relative;">
+                    <button type="button" class="btn btn-outline-secondary btn-rounded btn-icon close btn-input-clear">
+                      <i class="mdi mdi-window-close"></i>
+                    </button>
+                    <input type="text" class="form-control form-control-lg" name="username" placeholder="Username" autocomplete="off">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>密码</label>
+                  <div style="position:relative;">
+                      <button type="button" class="btn btn-outline-secondary btn-rounded btn-icon close btn-input-clear">
+                        <i class="mdi mdi-window-close"></i>
+                      </button>
+                    <input type="password" class="form-control form-control-lg" name="password" placeholder="Password">
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">登 录</button>
+                </div>
+                <div class="text-center mt-4 font-weight-light">
+                  没 有 账 户? <a href="{{ url_for('register') }}" class="text-primary">注 册</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="{{url_for('static',filename='vendors/base/vendor.bundle.base.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/ClearInput.js')}}"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <!-- endinject -->
+</body>
+
+</html>

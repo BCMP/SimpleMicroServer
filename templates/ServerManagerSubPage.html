@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Home</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{url_for('static',filename='vendors/mdi/css/materialdesignicons.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='vendors/base/vendor.bundle.base.css')}}">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <link rel="stylesheet" href="{{url_for('static',filename='vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/ySelect.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/jquery.toast.css')}}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{url_for('static',filename='images/web.png')}}" />
+</head>
+<body style="padding-top:1.04rem;padding-bottom:4rem;padding-left:1.04rem;padding-right:1.04rem !important;background:#f3f3f3;">
+  <div class="content-wrapper" style="padding:0px;background:#ffffff;">
+    <div class="row">
+      <div class="col-md-12 stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-big-title">微 服 务 管 理</h4>
+            <!-- 管理表单 -->
+            <form class="form-sample">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">组 别</label>
+                    <div class="col-sm-9">
+                      <div style="position:relative;">
+                        <input id="ServerGroup" type="search" class="form-control" placeholder="all"
+                             oninput="this.value=this.value.replace(/[^\d^\.^a-zA-Z]/g,'')"
+                             onafterpaste = "this.value=this.value.replace(/[^\d^\.^a-zA-Z]/g,'')" autocomplete="off">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">服 务 类 型</label>
+                    <div class="col-sm-9">
+                      <select id="ServiceType" class="form-control">
+                        <optgroup label="系统服务">
+                          <option value="Userinfo">用户查询服务(Userinfo)</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group row" >
+                    <div class="col-sm-12" style="align-items: center;">
+                      <div class="btn-group" role="group" aria-label="Basic example" style="float:right;">
+                        <input type="button" class="btn btn-sm btn-inverse-primary" id="add" value="新 增"/>
+                        <button type="reset" class="btn btn-sm btn-inverse-warning" onclick="$('#ServiceType').ClearSelected();">重 置</button>
+                        <input type="button" class="btn btn-sm btn-inverse-danger" id="delete" value="删 除"/>
+                      </div>
+                    </div>
+                  </div>
+               </div>
+              </div>
+            </form>
+            <div class="form-check mx-sm-2" style="margin-left:0rem !important;">
+              <label class="form-check-label" style="line-height:1.3;">
+                <input id="refresh" type="checkbox" class="form-check-input" onclick="timing_refresh();">
+                表格自动刷新(每3秒)
+              </label>
+            </div>
+            <!-- 数据显示表格 -->
+            <div class="table-responsive">
+              <table id="ServerTable" class="table table-hover">
+                <thead style="color:rgba(255,255,255,1);background-color:#6495ED;">
+                  <tr>
+                      <th style="border:1px solid #3f51b5;">组别</th>
+                      <th style="border:1px solid #3f51b5;">服务名</th>
+                      <th style="border:1px solid #3f51b5;">状态</th>
+                      <th style="border:1px solid #3f51b5;">更新时间</th>
+                      <th style="border:1px solid #3f51b5;">任务数量</th>
+                  </tr>
+                </thead>
+                <tbody id="ServerInfo">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- plugins:js -->
+  <script src="{{url_for('static',filename='vendors/base/vendor.bundle.base.js')}}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="{{url_for('static',filename='vendors/chart.js/Chart.min.js')}}"></script>
+  <script src="{{url_for('static',filename='vendors/datatables.net/jquery.dataTables.js')}}"></script>
+  <script src="{{url_for('static',filename='vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/jquery.toast.js')}}"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="{{url_for('static',filename='js/lib/off-canvas.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/hoverable-collapse.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/template.js')}}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{{url_for('static',filename='js/lib/ySelect.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/message.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/dashboard.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/ServerManager.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/data-table.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/jquery.dataTables.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/dataTables.bootstrap4.js')}}"></script>
+  <script src="{{url_for('static',filename='js/lib/ClearInput.js')}}"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
